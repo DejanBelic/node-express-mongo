@@ -53,8 +53,9 @@ app.post('/clicked', (req, res) => {
 });
 
 app.get('/clicks', (req, res) => {
-  db.collection('clicks').find().toArray((err, result) => {
-    if (err) return console.log(err);
-    res.send(result)
+  ClicksCollection.find(function (err, kittens) {
+    if (err) return console.error(err);
+    console.log(kittens);
+    res.send(kittens)
   })
 })
